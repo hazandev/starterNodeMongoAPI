@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const dbService = require('./services/generalService/db.service');
+const dbService = require('./services/db.service');
 
 const collection = async () => {
     const userCollection = await dbService.getCollection('user');
