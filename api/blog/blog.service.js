@@ -9,7 +9,7 @@ module.exports = {
     remove
 }
 
-const collectionName = 'user';
+const collectionName = 'blog';
 async function query() {
     try {
         const collection = await dbService.getCollection(collectionName);
@@ -23,21 +23,21 @@ async function query() {
 async function getById(id) {
     try {
         const collection = await dbService.getCollection(collectionName);
-        const user = await collection.findById({ id }).toArray();
-        return user
+        const document = await collection.findById({ id }).toArray();
+        return document;
     } catch (error) {
-        console.error("cannot find user");
-        throw err;
+        console.error("cannot find document");
+        throw error;
     }
 }
 async function add(obj) {
     try {
         const collection = await dbService.getCollection(collectionName);
-        const document = await collection.insertOne(obj).toArray();
+        const document = await collection.insertOne(obj);
         return document
     } catch (error) {
-        console.error("cannot add user");
-        throw err;
+        console.error("cannot add document");
+        throw error;
     }
 }
 async function update(id, obj) { 
@@ -47,7 +47,7 @@ async function update(id, obj) {
         return document
     } catch (error) {
         console.error("cannot update user");
-        throw err;
+        throw error;
     }}
 async function remove() { 
     try {
@@ -56,5 +56,5 @@ async function remove() {
         return document
     } catch (error) {
         console.error("cannot delete user");
-        throw err;
+        throw error;
     }}

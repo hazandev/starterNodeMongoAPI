@@ -1,5 +1,5 @@
 const express = require("express");
-const {post,get, getById, update, remove} = './blog.controller.js';
+const {post,get, getById, update, remove} = require('./blog.controller.js');
 const router = express.Router();
 
 router.post('/',post)
